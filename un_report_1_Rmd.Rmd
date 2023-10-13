@@ -1,0 +1,28 @@
+---
+title: "A UN Report on the Relationship between GDP and CO2"
+author: "Hyoju Yang"
+date: "2023-10-13"
+output: html_document
+---
+```{r packages, include=FALSE}
+library(tidyverse)
+library(here)
+install.packages("here")
+```
+This report was prepared to the attentio of the UN. It analyzes the relatioship between an country's GDP, its life expectancy ,and CO2 emmissions. Our goal is to determine to what degree a country's economic strength or weakness is related to its pulbic health status and impact on climate pollution. We hypothesize that both life expectancy and CO2 emissions increase with the country's GDP.
+
+```{r data, include=FLASE}
+gapminder_1997<-read_csv(here("data/gapminder_1997.csv"))
+```
+```{r gdp_lifeexp_1997}
+ggplot(data=gapminder_1997, 
+       aes(gdPercap, 
+           y-lifeExp, 
+           color=continent, 
+           size=pop/1000000))+
+  geom_point()+
+  labs(x="GDP per Capita",
+       y="Life Expectancy", 
+       title="Do peple in wealthy countries live longe?", 
+       size="Population (in millions")
+```
